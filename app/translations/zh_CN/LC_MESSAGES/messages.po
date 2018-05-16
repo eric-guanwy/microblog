@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-16 23:20+0800\n"
+"POT-Creation-Date: 2018-05-16 23:45+0800\n"
 "PO-Revision-Date: 2018-05-15 00:25+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -228,6 +228,36 @@ msgstr "注册"
 
 #: app/templates/auth/reset_password.html:5
 msgid "Reset Your Password"
+msgstr ""
+
+#: app/templates/email/reset_password.html:4
+msgid "Dear"
+msgstr ""
+
+#: app/templates/email/reset_password.html:6
+msgid "To reset your password,"
+msgstr ""
+
+#: app/templates/email/reset_password.html:7
+msgid "click here"
+msgstr ""
+
+#: app/templates/email/reset_password.html:10
+msgid ""
+"Alternatively, you can paste the following link in your browser's address"
+" bar: "
+msgstr ""
+
+#: app/templates/email/reset_password.html:12
+msgid "If you have not requested a password reset simply ignore this message."
+msgstr ""
+
+#: app/templates/email/reset_password.html:13
+msgid "Sincerely,"
+msgstr ""
+
+#: app/templates/email/reset_password.html:14
+msgid "The Microblog Team"
 msgstr ""
 
 #: app/templates/errors/404.html:5
