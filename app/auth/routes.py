@@ -43,7 +43,7 @@ def login():
 	return render_template('auth/login.html',title='Sign In',form=form)
 
 
-@app.route('/reset_password_request', methods=['GET','POST'])
+@bp.route('/reset_password_request', methods=['GET','POST'])
 def reset_password_request():
 	if current_user.is_authenticated:
 		return redirect(url_for('index'))
@@ -56,7 +56,7 @@ def reset_password_request():
 		return redirect(url_for('index'))
 	return render_template('auth/reset_password_request.html', title=_('Reset Password'), form=form)
 
-@app.route('/reset_password/<token>', methods=['GET','POST'])
+@bp.route('/reset_password/<token>', methods=['GET','POST'])
 def reset_password(token):
 	if current_user.is_authenticated:
 		return redirect(url_for('index'))
