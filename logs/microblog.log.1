@@ -1,0 +1,109 @@
+2018-05-12 21:51:00,390 [ERROR] app.py(1761):Exception on /auth/register [POST]
+Traceback (most recent call last):
+  File "e:\workspace\flask\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "e:\workspace\flask\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "e:\workspace\flask\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "e:\workspace\flask\flask\_compat.py", line 35, in reraise
+    raise value
+  File "e:\workspace\flask\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "e:\workspace\flask\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:\workspace\microblog3\microblog\app\auth\routes.py", line 16, in register
+    if form.validate_on_submit():
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_wtf\form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "e:\programfiles\anaconda3\lib\site-packages\wtforms\form.py", line 310, in validate
+    return super(Form, self).validate(extra)
+  File "e:\programfiles\anaconda3\lib\site-packages\wtforms\form.py", line 152, in validate
+    if not field.validate(self, extra):
+  File "e:\programfiles\anaconda3\lib\site-packages\wtforms\fields\core.py", line 204, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "e:\programfiles\anaconda3\lib\site-packages\wtforms\fields\core.py", line 224, in _run_validation_chain
+    validator(form, self)
+  File "e:\programfiles\anaconda3\lib\site-packages\wtforms\validators.py", line 301, in __call__
+    message = field.gettext('Invalid email address.')
+  File "e:\programfiles\anaconda3\lib\site-packages\wtforms\fields\core.py", line 164, in gettext
+    return self._translations.gettext(string)
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_wtf\i18n.py", line 48, in gettext
+    t = _get_translations()
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_wtf\i18n.py", line 40, in _get_translations
+    dirname, [get_locale()], domain='wtforms'
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_babel\__init__.py", line 257, in get_locale
+    rv = babel.locale_selector_func()
+  File "E:\workspace\microblog3\microblog\app\__init__.py", line 29, in get_locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+NameError: name 'request' is not defined
+2018-05-12 21:51:47,195 [INFO] __init__.py(47):Microblog startup
+2018-05-12 21:52:18,969 [INFO] __init__.py(47):Microblog startup
+2018-05-12 21:54:12,980 [INFO] __init__.py(47):Microblog startup
+2018-05-12 21:54:54,339 [INFO] __init__.py(47):Microblog startup
+2018-05-12 21:55:02,056 [INFO] routes.py(22):user 关文勇 registered.
+2018-05-12 22:06:24,124 [INFO] __init__.py(48):Microblog startup
+2018-05-12 22:09:19,729 [INFO] __init__.py(48):Microblog startup
+2018-05-12 22:09:21,971 [ERROR] app.py(1761):Exception on /user/关文勇 [GET]
+Traceback (most recent call last):
+  File "e:\workspace\flask\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "e:\workspace\flask\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "e:\workspace\flask\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "e:\workspace\flask\flask\_compat.py", line 35, in reraise
+    raise value
+  File "e:\workspace\flask\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "e:\workspace\flask\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "E:\workspace\microblog3\microblog\app\routes.py", line 65, in user
+    return render_template('user.html', user=user, posts=posts.items, prev_url=prev_url, next_url=next_url)
+  File "e:\workspace\flask\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "e:\workspace\flask\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "e:\programfiles\anaconda3\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "e:\programfiles\anaconda3\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "e:\programfiles\anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "e:\programfiles\anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "E:\workspace\microblog3\microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "E:\workspace\microblog3\microblog\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "E:\workspace\microblog3\microblog\app\templates\base.html", line 56, in block "content"
+    {% block app_content %}{% endblock %}
+  File "E:\workspace\microblog3\microblog\app\templates\user.html", line 28, in block "app_content"
+    {% include 'posts.html' %}
+  File "E:\workspace\microblog3\microblog\app\templates\posts.html", line 10, in top-level template code
+    said {{ _(moment(post.timestamp).fromNow()) }}:
+  File "e:\programfiles\anaconda3\lib\site-packages\jinja2\ext.py", line 134, in _gettext_alias
+    return __context.call(__context.resolve('gettext'), *args, **kwargs)
+  File "e:\programfiles\anaconda3\lib\site-packages\jinja2\ext.py", line 140, in gettext
+    rv = __context.call(func, __string)
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_babel\__init__.py", line 116, in <lambda>
+    lambda x: get_translations().ugettext(x),
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_babel\__init__.py", line 227, in get_translations
+    [get_locale()],
+  File "e:\programfiles\anaconda3\lib\site-packages\flask_babel\__init__.py", line 261, in get_locale
+    locale = Locale.parse(rv)
+  File "e:\programfiles\anaconda3\lib\site-packages\Babel-2.5.0-py3.6.egg\babel\core.py", line 268, in parse
+    parts = parse_locale(identifier, sep=sep)
+  File "e:\programfiles\anaconda3\lib\site-packages\Babel-2.5.0-py3.6.egg\babel\core.py", line 1094, in parse_locale
+    raise ValueError('expected only letters, got %r' % lang)
+ValueError: expected only letters, got 'zh-cn'

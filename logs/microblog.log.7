@@ -1,0 +1,135 @@
+2018-05-11 16:41:12,116 [ERROR] app.py(1761):Exception on /index [GET]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 260, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "d:\microblog\flask\lib\site-packages\flask_login\login_manager.py", line 175, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 112, in login_url
+    base = expand_login_view(login_view)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 89, in expand_login_view
+    return url_for(login_view)
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "d:\microblog\flask\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2018-05-11 16:41:48,070 [ERROR] app.py(1761):Exception on / [GET]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 260, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "d:\microblog\flask\lib\site-packages\flask_login\login_manager.py", line 175, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 112, in login_url
+    base = expand_login_view(login_view)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 89, in expand_login_view
+    return url_for(login_view)
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "d:\microblog\flask\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2018-05-11 16:43:18,233 [ERROR] app.py(1761):Exception on / [GET]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 260, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "d:\microblog\flask\lib\site-packages\flask_login\login_manager.py", line 175, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 112, in login_url
+    base = expand_login_view(login_view)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 89, in expand_login_view
+    return url_for(login_view)
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "d:\microblog\flask\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2018-05-11 16:43:20,053 [ERROR] app.py(1761):Exception on / [GET]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 260, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "d:\microblog\flask\lib\site-packages\flask_login\login_manager.py", line 175, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 112, in login_url
+    base = expand_login_view(login_view)
+  File "d:\microblog\flask\lib\site-packages\flask_login\utils.py", line 89, in expand_login_view
+    return url_for(login_view)
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "d:\microblog\flask\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2018-05-11 16:43:23,662 [INFO] __init__.py(34):Microblog startup
+2018-05-11 16:45:31,658 [INFO] __init__.py(35):Microblog startup
+2018-05-11 17:34:58,760 [INFO] __init__.py(39):Microblog startup

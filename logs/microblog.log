@@ -1,0 +1,148 @@
+2018-05-16 12:33:33,759 [INFO] __init__.py(49):Microblog startup
+2018-05-16 16:38:22,512 [INFO] __init__.py(49):Microblog startup
+2018-05-16 16:38:34,034 [ERROR] app.py(1761):Exception on /auth/login [GET]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\microblog\app\auth\routes.py", line 42, in login
+    return render_template('auth/login.html',title='Sign In',form=form)
+  File "d:\microblog\flask\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "d:\microblog\flask\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "d:\microblog\flask\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "d:\microblog\flask\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "d:\microblog\flask\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "D:\microblog\app\templates\auth\login.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "D:\microblog\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "d:\microblog\flask\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "d:\microblog\flask\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "d:\microblog\flask\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "d:\microblog\flask\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "D:\microblog\app\templates\base.html", line 57, in block "content"
+    {% block app_content %}{% endblock %}
+  File "D:\microblog\app\templates\auth\login.html", line 32, in block "app_content"
+    <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "d:\microblog\flask\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'reset_password_request'. Did you mean 'reset_passsword_request' instead?
+2018-05-16 16:46:57,155 [INFO] __init__.py(49):Microblog startup
+2018-05-16 16:47:11,333 [ERROR] app.py(1761):Exception on /reset_password_request [POST]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\microblog\app\routes.py", line 128, in reset_password_request
+    send_password_reset_email(user)
+  File "D:\microblog\app\email.py", line 13, in send_password_reset_email
+    token = user.get_reset_password_token()
+  File "D:\microblog\app\models.py", line 61, in get_reset_password_token
+    app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')
+NameError: name 'app' is not defined
+2018-05-16 16:47:59,589 [INFO] __init__.py(49):Microblog startup
+2018-05-16 16:48:02,756 [ERROR] app.py(1761):Exception on /reset_password_request [POST]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\microblog\app\routes.py", line 128, in reset_password_request
+    send_password_reset_email(user)
+  File "D:\microblog\app\email.py", line 16, in send_password_reset_email
+    recipients=[user.send_email],
+AttributeError: 'User' object has no attribute 'send_email'
+2018-05-16 16:49:26,303 [INFO] __init__.py(49):Microblog startup
+2018-05-16 16:51:32,325 [ERROR] app.py(1761):Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6NiwiZXhwIjoxNTI2NDYxMTc0LjA2ODYyMjZ9.5gEoc5OiMdgDggFPooXTWH2vguENo7yk4_xkpWBUxiU [POST]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\microblog\app\routes.py", line 142, in reset_password
+    user.set_password(form.password.data)
+AttributeError: 'User' object has no attribute 'set_password'
+2018-05-16 16:52:07,965 [INFO] __init__.py(49):Microblog startup
+2018-05-16 16:52:11,120 [ERROR] app.py(1761):Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6NiwiZXhwIjoxNTI2NDYxMTc0LjA2ODYyMjZ9.5gEoc5OiMdgDggFPooXTWH2vguENo7yk4_xkpWBUxiU [POST]
+Traceback (most recent call last):
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\microblog\app\routes.py", line 146, in reset_password
+    return redirect(url_for('login'))
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\microblog\flask\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\microblog\flask\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "d:\microblog\flask\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "d:\microblog\flask\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2018-05-16 16:52:27,800 [INFO] __init__.py(49):Microblog startup
+2018-05-16 17:00:11,262 [INFO] __init__.py(49):Microblog startup
+2018-05-16 17:15:31,895 [INFO] __init__.py(49):Microblog startup
