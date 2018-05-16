@@ -20,3 +20,6 @@ class Config(object):
     POSTS_PER_PAGE = 3
 
     LANGUAGES = ['en', 'zh_Hans_CN']
+
+    YOUDAO_TRANSLATOR_KEY = os.environ.get('YOUDAO_TRANSLATOR_KEY') or '7a17331869ac5cb2'
+    YOUDAO_SECRET_KEY = os.environ.get('YOUDAO_TRANSLATOR_KEY') or 'nfHqgQJxNTqGXqHlBxeJVw9nPSrWBd7l'

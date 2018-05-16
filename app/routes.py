@@ -6,6 +6,9 @@ from app.models import User, Post
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from flask_babel import _, get_locale
+from guess_language import guess_language
+from flask import jsonify
+from app.translate import translate
 import os
 
 @app.route('/', methods=['GET', 'POST'])
@@ -17,7 +20,13 @@ def index():
 	page = request.args.get('page',1,type=int)
 	if request.method=='POST':
 		if form.validate_on_submit():
-			post = Post(body=form.body.data,timestamp=datetime.utcnow(),author=user)			
+			language = guess_language(form.body.data)
+			print(language)
+			if language == 'UNKNOWN' or len(language) >5:
+				language = ''
+
+			post = Post(body=form.body.data,author=user,
+						timestamp=datetime.utcnow(),language=language)			
 			db.session.add(post)
 			db.session.commit()
 			flash(_('Your post is now live!'))
@@ -114,6 +123,14 @@ def unfollow(username):
 	db.session.commit()
 	flash(_('You have stop follow %(username)s now.', username=username))
 	return redirect(url_for('user',username=username))
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+	return jsonify({'text': translate(request.form['text'],
+										request.form['source_language'],
+										request.form['dest_language'])})
+
 
 @app.route('/upload', methods=['GET','POST'])
 @login_required

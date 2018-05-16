@@ -1,4 +1,5 @@
-<table class="table table-hover">
+
+ <table class="table table-hover">
 	<tr>
 		<td width="70px">
 			{% set user_link %}
@@ -6,7 +7,19 @@
             {% endset %}
             {{ _('%(username)s said %(when)s',username=user_link, when=moment(post.timestamp).fromNow()) }}
 			<br>
-			{{ post.body }}
+			<span id='post{{post.id}}'>{{ post.body }}</span>
+			{{post.language}}
+			{{g.locale}}
+			{% if post.language and post.language != g.locale %}
+				<br><br>
+				<span id="translation{{ post.id }}">
+					<a href="javascript:translate(
+	                                '#post{{ post.id }}',
+	                                '#translation{{ post.id }}',
+	                                '{{ post.language }}',
+	                                '{{ g.locale }}');">{{ _('Translate')}}</a>
+                </span>
+			{% endif %}
 		</td>
 	</tr>
 	
