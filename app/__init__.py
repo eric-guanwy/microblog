@@ -37,6 +37,20 @@ app.register_blueprint(auth_bp, url_prefix='/auth')
 
 from app import routes, models
 
+def create_app(config_class=Config):
+	app = Flask(__name__)
+	app.config.from_object(config_class)
+	
+	db.init_app(app)
+	migrate.init_app(app)
+	login.init_app(app)
+	mail.init_app(app)
+	bootstrap.init_app(app)
+	moment.init_app(app)
+	babel.init_app(app)
+	
+
+
 if not app.debug:
 	if not os.path.exists('logs'):
 		os.mkdir('logs')
