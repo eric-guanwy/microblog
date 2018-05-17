@@ -55,10 +55,13 @@ def before_request():
 	if current_user.is_authenticated: 
 		current_user.last_seen = datetime.utcnow()
 		db.session.commit()
+		#print('get_locale():',str(get_locale()))
 	g.locale = str(get_locale())
+	
 	if g.locale == 'zh_Hans_CN':
 		g.locale = 'zh_CN'
 	#print('g.locale:',g.locale) 
+	
 
 
 @app.route('/logout')

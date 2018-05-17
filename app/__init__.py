@@ -14,7 +14,7 @@ import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['BABEL_DEFAULT_LOCALE'] = 'zh_Hans_CN'
+#app.config['BABEL_DEFAULT_LOCALE'] = 'zh_Hans_CN'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
@@ -24,12 +24,12 @@ mail = Mail(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 babel = Babel(app)
-"""
+
 @babel.localeselector
 def get_locale():
-	print('init:',request.accept_languages.best_match(app.config['LANGUAGES']))
+	#print('init:',request.accept_languages.best_match(app.config['LANGUAGES']))
 	return request.accept_languages.best_match(app.config['LANGUAGES'])
-"""
+
 from app.errors import bp as errors_bp
 app.register_blueprint(errors_bp)
 from app.auth import bp as auth_bp
