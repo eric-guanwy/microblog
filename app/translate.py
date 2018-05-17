@@ -21,7 +21,9 @@ def translate(text, source_language, dest_language):
 	myurl = myurl+'?appKey='+app.config['YOUDAO_TRANSLATOR_KEY']+'&q='+quote(text)+'&from='+source_language+'&to='+dest_language+'&salt='+str(salt)+'&sign='+sign
 	 
 	r = requests.get('http://openapi.youdao.com'+myurl)
-	if r.status_code != 200:
-		return _('Error: the translation service failed.')
-	print(json.loads(r.content.decode('utf-8-sig')))
-	return json.loads(r.content.decode('utf-8-sig'))
+	#print(type(r))
+	res = json.loads(r.content.decode('utf-8-sig'))
+	#print (type(res))
+	#print (res['translation'][0])
+
+	return res['translation'][0]

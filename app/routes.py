@@ -126,10 +126,10 @@ def unfollow(username):
 
 @app.route('/translate', methods=['POST'])
 @login_required
-def translate_text():
-	return jsonify({'text': translate(request.form['text'],
+def translate_text():	
+	return jsonify({'text': "{}".format(translate(request.form['text'],
 										request.form['source_language'],
-										request.form['dest_language'])})
+										request.form['dest_language']))})
 
 
 @app.route('/upload', methods=['GET','POST'])

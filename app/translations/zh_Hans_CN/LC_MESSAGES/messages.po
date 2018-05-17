@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-16 23:45+0800\n"
-"PO-Revision-Date: 2018-05-16 23:16+0800\n"
+"POT-Creation-Date: 2018-05-17 14:04+0800\n"
+"PO-Revision-Date: 2018-05-17 13:58+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.0\n"
+"Generated-By: Babel 2.5.3\n"
 
 #: app/__init__.py:22
 msgid "Please log in to access this page."
@@ -42,45 +42,49 @@ msgstr "请换一个用户名。"
 msgid "Say something"
 msgstr "说些什么："
 
-#: app/routes.py:23
+#: app/routes.py:32
 msgid "Your post is now live!"
 msgstr "您的说说已提交"
 
-#: app/routes.py:28 app/templates/base.html:26
+#: app/routes.py:37 app/templates/base.html:26
 msgid "Home"
 msgstr "主页"
 
-#: app/routes.py:64
+#: app/routes.py:73
 #, python-format
 msgid "user %(username)s not found."
 msgstr "用户%(username)s未找到。"
 
-#: app/routes.py:79
+#: app/routes.py:88
 msgid "your changes has been saved."
 msgstr "您的更改已保存。"
 
-#: app/routes.py:91 app/routes.py:107
+#: app/routes.py:100 app/routes.py:116
 #, python-format
 msgid "User %(username)s Not Found."
 msgstr "用户%(username)s未找到。"
 
-#: app/routes.py:94
+#: app/routes.py:103
 msgid "You cannot follow yourself."
 msgstr "您无需关注您自己。"
 
-#: app/routes.py:99
+#: app/routes.py:108
 #, python-format
 msgid "You are following %(username)s."
 msgstr "您正在关注%(username)s。"
 
-#: app/routes.py:110
+#: app/routes.py:119
 msgid "You cannot unfollow yourself."
 msgstr "您无需取消关注您自己。"
 
-#: app/routes.py:115
+#: app/routes.py:124
 #, python-format
 msgid "You have stop follow %(username)s now."
 msgstr "您已经停止关注%(username)s。"
+
+#: app/translate.py:12
+msgid "Error: the translation service is not configured."
+msgstr ""
 
 #: app/auth/email.py:20
 msgid "[Microblog] Reset Your Password"
@@ -162,6 +166,10 @@ msgstr "用户空间"
 msgid "Logout"
 msgstr "退出"
 
+#: app/templates/base.html:57
+msgid "Error: Could not contact server."
+msgstr "错误：无法连接服务器。"
+
 #: app/templates/edit_profile.html:6 app/templates/user.html:19
 msgid "Edit Your Profile"
 msgstr "编辑您的简介"
@@ -179,10 +187,14 @@ msgstr "新的说说"
 msgid "Older posts"
 msgstr "旧的说说"
 
-#: app/templates/posts.html:7
+#: app/templates/posts.html:8
 #, python-format
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s %(when)s说"
+
+#: app/templates/posts.html:18
+msgid "Translate"
+msgstr ""
 
 #: app/templates/user.html:16
 msgid "Last seen on"
@@ -230,35 +242,35 @@ msgstr "注册"
 msgid "Reset Your Password"
 msgstr "重置您的密码"
 
-#: app/templates/email/reset_password.html:4
+#: app/templates/email/reset_password.html:2
 msgid "Dear"
-msgstr ""
+msgstr "亲爱的"
 
-#: app/templates/email/reset_password.html:6
+#: app/templates/email/reset_password.html:4
 msgid "To reset your password,"
-msgstr ""
+msgstr "为了重置您的密码，"
 
-#: app/templates/email/reset_password.html:7
+#: app/templates/email/reset_password.html:5
 msgid "click here"
-msgstr ""
+msgstr "点击这里"
 
-#: app/templates/email/reset_password.html:10
+#: app/templates/email/reset_password.html:8
 msgid ""
 "Alternatively, you can paste the following link in your browser's address"
 " bar: "
-msgstr ""
+msgstr "或者，您可以粘贴下面的链接到您的浏览器地址栏："
+
+#: app/templates/email/reset_password.html:10
+msgid "If you have not requested a password reset simply ignore this message."
+msgstr "如果您未进行密码重置请求，请忽略此邮件。"
+
+#: app/templates/email/reset_password.html:11
+msgid "Sincerely,"
+msgstr "此致，"
 
 #: app/templates/email/reset_password.html:12
-msgid "If you have not requested a password reset simply ignore this message."
-msgstr ""
-
-#: app/templates/email/reset_password.html:13
-msgid "Sincerely,"
-msgstr ""
-
-#: app/templates/email/reset_password.html:14
 msgid "The Microblog Team"
-msgstr ""
+msgstr "微博客团队"
 
 #: app/templates/errors/404.html:5
 msgid "File Not Found"
