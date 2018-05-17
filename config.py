@@ -14,7 +14,7 @@ class Config(object):
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
     FAKE_MAIL_FROM = os.environ.get('FAKE_MAIL_FROM') or 'bravocomtech.com'
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')  or 'wenyongg@bravocomtech.com'
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or 'joyce@2017'
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') 
     ADMINS = ['wenyongg@bravocomtech.com']
 
     POSTS_PER_PAGE = 3
