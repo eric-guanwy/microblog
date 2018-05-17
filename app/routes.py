@@ -9,6 +9,7 @@ from flask_babel import _, get_locale
 from guess_language import guess_language
 from flask import jsonify
 from app.translate import translate
+from langdetect import detect
 import os
 
 @app.route('/', methods=['GET', 'POST'])
@@ -20,10 +21,12 @@ def index():
 	page = request.args.get('page',1,type=int)
 	if request.method=='POST':
 		if form.validate_on_submit():
-			language = guess_language(form.body.data)
-			print(language)
-			if language == 'UNKNOWN' or len(language) >5:
+			#language = guess_language(form.body.data)
+			try:
+				language = detect(form.body.data)
+			except Exception as e:
 				language = ''
+				app.logger.error(e)
 
 			post = Post(body=form.body.data,author=user,
 						timestamp=datetime.utcnow(),language=language)			
