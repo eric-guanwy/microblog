@@ -9,14 +9,18 @@
 			<br>
 			<span id="post{{post.id}}">{{ post.body }}</span>
 			{% if post.language and post.language != g.locale %}
-				<br><br>
-				<span id="translation{{ post.id }}">
-					<a href="javascript:translate(
-	                                '#post{{ post.id }}',
-	                                '#translation{{ post.id }}',
-	                                '{{ post.language }}',
-	                                '{{ g.locale }}');">{{ _('Translate')}}</a>
-                </span>
+				{% if post.language == 'zh-cn' and g.locale == 'zh_CN' %}
+					<!--tackle the description difference for language 'zh-CN'  between post.language and g.locale. DO NOT SHOW '翻译' button. -->
+				{% else %}
+					<br><br>
+					<span id="translation{{ post.id }}">
+						<a href="javascript:translate(
+		                                '#post{{ post.id }}',
+		                                '#translation{{ post.id }}',
+		                                '{{ post.language }}',
+		                                '{{ g.locale }}');">{{ _('Translate')}}</a>
+	                </span>
+				{% endif %}
 			{% endif %}
 		</td>
 	</tr>
