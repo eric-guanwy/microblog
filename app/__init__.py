@@ -14,7 +14,6 @@ import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
-#app.config['BABEL_DEFAULT_LOCALE'] = 'zh_Hans_CN'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
