@@ -29,3 +29,5 @@ class Config(object):
     #print('YOUDAO_TRANSLATOR_KEY:',YOUDAO_TRANSLATOR_KEY)
     YOUDAO_SECRET_KEY = os.environ.get('YOUDAO_SECRET_KEY')
     #print('YOUDAO_SECRET_KEY',YOUDAO_SECRET_KEY)
+
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
