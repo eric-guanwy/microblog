@@ -8,7 +8,7 @@ load_dotenv(os.path.join(basedir,'.env'))
 class Config(object):
 
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    print('SECRET_KEY:',SECRET_KEY)
+    #print('SECRET_KEY:',SECRET_KEY)
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
     'sqlite:///' + os.path.join(basedir,'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -26,6 +26,6 @@ class Config(object):
     LANGUAGES = ['zh_CN', 'en']
 
     YOUDAO_TRANSLATOR_KEY = os.environ.get('YOUDAO_TRANSLATOR_KEY')
-    print('YOUDAO_TRANSLATOR_KEY:',YOUDAO_TRANSLATOR_KEY)
+    #print('YOUDAO_TRANSLATOR_KEY:',YOUDAO_TRANSLATOR_KEY)
     YOUDAO_SECRET_KEY = os.environ.get('YOUDAO_SECRET_KEY')
-    print('YOUDAO_SECRET_KEY',YOUDAO_SECRET_KEY)
+    #print('YOUDAO_SECRET_KEY',YOUDAO_SECRET_KEY)
