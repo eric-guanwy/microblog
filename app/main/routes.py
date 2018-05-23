@@ -94,6 +94,11 @@ def user(username):
 	next_url = url_for('main.user', username=username, page=posts.next_num) if posts.has_next else None	
 	return render_template('user.html', user=user, posts=posts.items, prev_url=prev_url, next_url=next_url)
 
+@bp.route('/user/<username>/popup')
+@login_required
+def user_popup(username):
+	user = User.query.filter_by(username=username).first_or_404()
+	return render_template('user_popup.html', user=user)
 
 @bp.route('/follow/<username>')
 @login_required

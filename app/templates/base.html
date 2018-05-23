@@ -24,23 +24,24 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
-				<li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>			
+				<li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
+				{% if not current_user.is_anonymous %}
+					<li><a href="{{ url_for('main.user',username=current_user.username)}}">{{ _('Profile') }}</a></li>		
+				{% endif %}
 			</ul>
-			{% if g.search_form %}
-                <form class="navbar-form navbar-left" method="get"
-                        action="{{ url_for('main.search') }}">
-                    <div class="form-group">
-                        {{ g.search_form.q(size=20, class='form-control',
-                            placeholder=g.search_form.q.label.text) }}
-                    </div>
-                </form>
-            {% endif %}
-
 			<ul class="nav navbar-nav navbar-right">
+				{% if g.search_form %}
+	                <form class="navbar-form navbar-left" method="get"
+	                        action="{{ url_for('main.search') }}">
+	                    <div class="form-group">
+	                        {{ g.search_form.q(size=20, class='form-control',
+	                            placeholder=g.search_form.q.label.text) }}
+	                    </div>
+	                </form>
+            	{% endif %}
 				{% if current_user.is_anonymous %}
 					<li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
-				{% else %}					
-					<li><a href="{{ url_for('main.user',username=current_user.username)}}">{{ _('Profile') }}</a></li>
+				{% else %}
 					<li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
 				{% endif %}				
 			</ul>				
@@ -67,6 +68,51 @@
                 $(destElem).text("{{ _('Error: Could not contact server.') }}");
             });
         }
+
+        $(function(){
+        	var timer = null;
+        	var xhr = null;
+        	$('.user_popup').hover(
+        			function(event) {
+        				//mouse in event handler
+        				var elem =  $(event.currentTarget);
+        				timer = setTimeout(function(){
+        					timer = null;
+        					xhr = $.ajax(
+        							'/user/' + elem.first().text().trim() + '/popup').done(
+        							function(data) {
+        								xhr = null
+        								elem.popover({
+        									trigger: 'manual',
+        									html:true,
+        									animation: false,
+        									container: elem,
+        									content: data
+        								}).popover('show');
+        								flask_moment_render_all();        								
+        							}
+        						);
+        					//popup logic goes here        					
+        				}, 500);
+        			},
+        			function(event) {
+        				//mouse out event handler
+        				var elem =  $(event.currentTarget);
+        				if (timer) {
+        					clearTimeout(timer);
+        					timer= null;
+        				}
+        				else if (xhr) {
+        					xhr.abort();
+        					xhr = null;
+        				}
+        				else {
+        					//destory popup here        					
+        					elem.popover('destroy');
+        				}
+        			}
+        		);
+        });
     </script>
 {% endblock %}
 

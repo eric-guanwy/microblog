@@ -34,7 +34,7 @@ class TestCase(unittest.TestCase):
 """
 class TestConfig(Config):
 	TESTING = True
-	SQLALECHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'test.db')
+	SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'test.db')
 
 class UserModelCase(unittest.TestCase):
 	def setUp(self):
