@@ -168,7 +168,7 @@ def upload():
 		basepath = os.path.abspath(os.path.dirname(__file__))
 		basepath = os.path.abspath(os.path.join(basepath, ".."))
 		print('basepath',basepath)
-		upload_path = os.path.join(basepath, 'static\\uploads', secure_filename(f.filename))
+		upload_path = os.path.join(basepath, 'static/uploads', secure_filename(f.filename))
 		f.save(upload_path)
 		return redirect(url_for('main.upload'))
 	return render_template('upload.html')
