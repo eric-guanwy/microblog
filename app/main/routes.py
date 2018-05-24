@@ -10,7 +10,7 @@ from langdetect import detect
 from app.main.translate import translate
 from werkzeug.utils import secure_filename
 from app.main import bp
-
+import os
 
 @bp.before_app_request
 def before_request():
@@ -160,8 +160,14 @@ def translate_text():
 @login_required
 def upload():
 	if request.method == 'POST':
-		f = request.files['file']
-		basepath = os.path.dirname(__file__)
+		try:
+			f = request.files['file']
+		except Exception as e:
+			print('Exception: {}'.format(e))
+			return redirect(url_for('main.upload'))
+		basepath = os.path.abspath(os.path.dirname(__file__))
+		basepath = os.path.abspath(os.path.join(basepath, ".."))
+		print('basepath',basepath)
 		upload_path = os.path.join(basepath, 'static\\uploads', secure_filename(f.filename))
 		f.save(upload_path)
 		return redirect(url_for('main.upload'))

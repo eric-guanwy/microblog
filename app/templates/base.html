@@ -1,15 +1,16 @@
 {% extends 'bootstrap/base.html' %}
 
-{% block title %}
+{% block title %}	
 	{% if title %}
 		{{ title }} -- Microblog
 	{% else %}
 		{{ _('Welcome to Microblog') }}
 	{% endif %}
+
 {% endblock %}
 
 {% block navbar %}
-	
+
 <nav class="nav nav-default">
 	<div class="container">
 		<div class="navbar-header"> 
