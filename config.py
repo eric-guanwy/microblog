@@ -31,3 +31,5 @@ class Config(object):
     #print('YOUDAO_SECRET_KEY',YOUDAO_SECRET_KEY)
 
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
