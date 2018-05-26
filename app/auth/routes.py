@@ -59,7 +59,10 @@ def reset_password_request():
 		user = User.query.filter_by(email=form.email.data).first()
 		if user:
 			send_password_reset_email(user)
-		flash(_('Check your email for instructions to reset your password.'))
+			current_app.logger.info('user {} with <{}> request to reset password.'.format(user.username, form.email.data))
+		else:
+			current_app.logger.warn('unregistered <{}> request to reset password.'.format(form.email.data))
+		flash(_('Check your email for instructions to reset your password.'))		
 		return redirect(url_for('auth.login'))
 	return render_template('auth/reset_password_request.html', title=_('Reset Password'), form=form)
 
@@ -76,6 +79,7 @@ def reset_password(token):
 		db.session.add(user)
 		db.session.commit()
 		flash(_('Your password has been reset.'))
+		current_app.logger.info('user {} with <{}> has been reset password.'.format(user.username, form.email.data))
 		return redirect(url_for('auth.login'))
 	return render_template('auth/reset_password.html',title=_('Reset Password'),form=form)
 
