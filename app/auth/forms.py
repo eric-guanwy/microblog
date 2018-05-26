@@ -19,7 +19,7 @@ class RegistrationForm(FlaskForm):
 		render_kw={"placeholder":_l("Username"),"type":"text"},
 		validators=[DataRequired()])
 	email = StringField(_l('Email'),
-		render_kw={"placeholder": _l("Email %(email)s",email=": yourname@example.com"), "type":"text","autocomplete":"email"}, 
+		render_kw={"placeholder": _l("Email : yourname@example.com"), "type":"text","autocomplete":"email"}, 
 		validators=[DataRequired(), Email()])
 	password = PasswordField(_l('Password'), 
 		render_kw={"placeholder": _l("Password"), "type":"password","autocomplete":"new-password"},
@@ -39,10 +39,16 @@ class RegistrationForm(FlaskForm):
 			raise ValidationError(_('Please use a different email.'))
 
 class ResetPasswordRequestForm(FlaskForm):
-	email = StringField(_l('Email'),validators=[DataRequired(), Email()])
+	email = StringField(_l('Email'),
+		render_kw={"placeholder": _l("Email: yourname@example.com"), "type":"text","autocomplete":"email"}, 
+		validators=[DataRequired(), Email()])
 	submit = SubmitField(_l('Request Password Reset'))	
 
 class ResetPasswordForm(FlaskForm):
-	password = PasswordField(_l('Password'),validators=[DataRequired()])
-	password2 = PasswordField(_l('Repeat Password'), validators=[DataRequired(), EqualTo('password')])
+	password = PasswordField(_l('Password'),
+		render_kw={"placeholder": _l("Password"), "type":"password","autocomplete":"new-password"},
+		validators=[DataRequired()])
+	password2 = PasswordField(_l('Repeat Password'), 
+		render_kw={"placeholder": _l("Repeat Password"), "type":"password","autocomplete":"new-password"},
+		validators=[DataRequired(), EqualTo('password')])
 	submit = SubmitField(_l('Request Password Reset'))	

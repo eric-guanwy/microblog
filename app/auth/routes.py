@@ -23,7 +23,7 @@ def register():
 		flash(_('Congratulations, you\'re now a registered user!'))
 		current_app.logger.info('user {} registered.'.format(form.username.data))
 		return redirect(url_for('auth.login'))
-	return render_template('auth/register.html',title='Register', form=form)
+	return render_template('auth/register.html',title=_('Register'), form=form)
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -40,7 +40,7 @@ def login():
 		if not next_page or url_parse(next_page).netloc != '':
 			next_page = url_for('main.index')
 		return redirect(next_page)
-	return render_template('auth/login.html',title='Sign In',form=form)
+	return render_template('auth/login.html',title=_('Sign In'),form=form)
 
 
 @bp.route('/logout')
@@ -77,6 +77,6 @@ def reset_password(token):
 		db.session.commit()
 		flash(_('Your password has been reset.'))
 		return redirect(url_for('auth.login'))
-	return render_template('auth/reset_password.html',form=form)
+	return render_template('auth/reset_password.html',title=_('Reset Password'),form=form)
 
 
