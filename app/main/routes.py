@@ -4,8 +4,8 @@ from flask import render_template, flash, redirect, url_for, request, g,\
 from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from app import db
-from app.main.forms import  EditProfileForm, PostForm, SearchForm
-from app.models import User, Post
+from app.main.forms import  EditProfileForm, PostForm, SearchForm, MessageForm
+from app.models import User, Post, Message
 from langdetect import detect
 from app.main.translate import translate
 from werkzeug.utils import secure_filename
@@ -154,6 +154,21 @@ def translate_text():
 	return jsonify({'text': "{}".format(translate(request.form['text'],
 										request.form['source_language'],
 										request.form['dest_language']))})
+
+
+@bp.route('/send_message/<recipient>', methods=['GET','POST'])
+@login_required
+def send_message(recipient):
+	user = User.query.filter_by(username=recipient).first_or_404()
+	form = MessageForm()
+	if form.validate_on_submit():
+		message = Message(author = current_user, recipient = user, body=form.message.data)
+		db.session.add(message)
+		db.session.commit()
+		flash(_('your message has been sent.'))
+		return redirect(url_for('main.user', username=recipient))
+	return render_template('send_message.html', title=_('Send message'), form=form, recipient=recipient)
+
 
 
 @bp.route('/upload', methods=['GET','POST'])

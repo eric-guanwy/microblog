@@ -68,6 +68,11 @@ class User(UserMixin, db.Model):
 
 	posts = db.relationship('Post', backref='author', lazy='dynamic')
 	tasks = db.relationship('Task', backref='user', lazy='dynamic')
+
+	#db.Relationship()第二个参数backref，将向Message类中添加一个author属性，从而定义反向关系。这一属性可替代sender_id访问User模型，此时获取的是模型对象，而不是外键的值。
+	message_sent = db.relationship('Message', foreign_keys='Message.sender_id', backref='author', lazy='dynamic')
+	message_recipient = db.relationship('Message', foreign_keys='Message.recipient_id', backref='recipient',lazy='dynamic')
+	last_message_read_time = db.Column(db.DateTime)
 	
 	def avatar(self,size):
 		digest = md5(self.email.lower().encode('utf-8')).hexdigest()
@@ -108,6 +113,11 @@ class User(UserMixin, db.Model):
 			return
 		return User.query.get(id)
 
+	def new_message(self):
+		last_read_time = self.last_message_read_time or datetime(1900,1,1)
+		return Message.filter_by(recipient==self).filter(Message.timestamp > last_read_time).count()
+		#recipient是定义message_recipient时通过db.relationship()的backref=‘recipient’参数为Message增加的反向索引关系，索引的是User的模型而非id，故此处使用"recipient==self"过滤。
+
 	def launch_task(self, name, description,*args, **kwargs):
 		rq_job = current_app.task_queue.enqueue('app.tasks.'+name, self.id, *args, **kwargs)
 		task = Task(id=rq_job.get_id(), name=name, description=description, user=self)
@@ -131,13 +141,25 @@ class Post(SearchableMixin, db.Model):
 	__searchable__ = ['body']
 	id = db.Column(db.Integer, primary_key=True)
 	body = db.Column(db.String(140))
-	timestamp = db.Column(db.DateTime, index=True, default=datetime.now)
+	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 	language = db.Column(db.String(5))
 	
 
 	def __repr__(self):
 		return "<Post {}>".format(self.body)
+
+class Message(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	body = db.Column(db.String(140))
+	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+	def __repr__(self):
+		return "<Message {}>".format(self.body)
+
+
 
 class Task(db.Model):
 	id = db.Column(db.String, primary_key=True)
