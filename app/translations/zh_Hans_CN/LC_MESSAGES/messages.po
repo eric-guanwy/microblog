@@ -144,11 +144,11 @@ msgstr "您的密码已经被重置。"
 
 #: app/templates/base.html:7
 msgid "Welcome to Microblog"
-msgstr "欢迎来到微博客"
+msgstr "欢迎来到自动化测试平台"
 
 #: app/templates/base.html:22
 msgid "Microblog"
-msgstr "微博客"
+msgstr "自动化测试平台"
 
 #: app/templates/base.html:27
 msgid "Explore"

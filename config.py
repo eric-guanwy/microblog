@@ -16,10 +16,10 @@ class Config(object):
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = os.environ.get('MAIL_PORT')
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
-    FAKE_MAIL_FROM = os.environ.get('FAKE_MAIL_FROM') or 'bravocomtech.com'
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')  or 'wenyongg@bravocomtech.com'
+    FAKE_MAIL_FROM = os.environ.get('FAKE_MAIL_FROM')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')     
-    ADMINS = ['wenyongg@bravocomtech.com']
+    ADMINS = os.environ.get('ADMINS') 
 
     POSTS_PER_PAGE = 3
 

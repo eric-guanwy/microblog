@@ -5,7 +5,7 @@ from flask_babel import _
 def send_password_reset_email(user):
 	token = user.get_reset_password_token()
 	send_email(_('[Microblog] Reset Your Password'),
-		sender='no-reply@' + current_app.config['FAKE_MAIL_FROM'],
+		sender=current_app.config['FAKE_MAIL_FROM'],
 		recipients=[user.email],
 		text_body=render_template('email/reset_password.txt', user=user,token=token),
 		html_body=render_template('email/reset_password.html',user=user,token=token))
