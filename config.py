@@ -19,7 +19,7 @@ class Config(object):
     FAKE_MAIL_FROM = os.environ.get('FAKE_MAIL_FROM')
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')     
-    ADMINS = os.environ.get('ADMINS') 
+    ADMINS = os.environ.get('ADMINS') or ['wenyongg@bravocomtech.com']
 
     POSTS_PER_PAGE = 3
 

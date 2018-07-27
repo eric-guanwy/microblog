@@ -1,0 +1,5 @@
+Dear {{user.username}},
+please find attached the archive of your testcases that you requested.
+
+sincerely,
+bravocomtech JJFA team
