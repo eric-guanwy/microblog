@@ -11,7 +11,7 @@ from flask_login import UserMixin
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
-from search import add_to_index, remove_from_index, query_index
+from app.search import add_to_index, remove_from_index, query_index
 
 
 followers = db.Table('followers', 
@@ -35,25 +35,31 @@ class SearchableMixin(object):
 	@classmethod
 	def before_commit(cls, session):
 		session._changes = {
-			'add':[obj for obj in session.new if isinstance(obj, cls)],
-			'update':[obj for obj in session.dirty if isinstance(obj, cls)],
-			'delete':[obj for obj in session.deleted if isinstance(obj, cls)]
+			'add':list(session.new),
+			'update':list(session.dirty),
+			'delete':list(session.deleted)
 		}
 
 	@classmethod
 	def after_commit(cls,session):
 		for obj in session._changes['add']:
-			add_to_index(cls.__tablename__, obj)
+			if isinstance(obj, SearchableMixin):
+				add_to_index(obj.__tablename__, obj)
 		for obj in session._changes['update']:
-			add_to_index(cls.__tablename__, obj)
+			if isinstance(obj, SearchableMixin):
+				add_to_index(obj.__tablename__, obj)
 		for obj in session._changes['delete']:
-			remove_from_index(cls.__tablename__,obj)
+			if isinstance(obj, SearchableMixin):
+				remove_from_index(obj.__tablename__,obj)
 		session._changes = None
 
 	@classmethod
 	def reindex(cls):
 		for obj in cls.query:
 			add_to_index(cls.__tablename__, obj)
+
+db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
+db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
 
 class PaginatedAPIMixin(object):
 	@staticmethod
@@ -233,8 +239,8 @@ class Post(SearchableMixin, db.Model):
 
 
 #synchronize to elastic node data.
-db.event.listen(db.session, 'before_commit', Post.before_commit)
-db.event.listen(db.session, 'after_commit', Post.after_commit)
+#db.event.listen(db.session, 'before_commit', Post.before_commit)
+#db.event.listen(db.session, 'after_commit', Post.after_commit)
 
 class Message(db.Model):
 	id = db.Column(db.Integer, primary_key=True)

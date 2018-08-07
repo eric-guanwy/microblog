@@ -10,6 +10,8 @@ from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_babel import Babel,lazy_gettext as _l
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 from elasticsearch import Elasticsearch
 from redis import Redis
 import rq
@@ -23,6 +25,8 @@ mail = Mail()
 bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel()
+admin = Admin(name='microblog', template_mode='bootstrap3')
+
 
 def create_app(config_class=Config):
 	app = Flask(__name__)
@@ -41,6 +45,7 @@ def create_app(config_class=Config):
 	bootstrap.init_app(app)
 	moment.init_app(app)
 	babel.init_app(app)
+	admin.init_app(app)
 
 
 
@@ -79,7 +84,7 @@ def create_app(config_class=Config):
 			print(app.config['ADMINS'])
 			mail_handler = SMTPHandler(
 				mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-	            fromaddr= 'no-reply@' + app.config['MAIL_SERVER'],#'no-reply@' + app.config['FAKE_MAIL_FROM'],	            
+	            fromaddr= 'wenyongg@' + app.config['MAIL_SERVER'],#'no-reply@' + app.config['FAKE_MAIL_FROM'],	            
 	            toaddrs=app.config['ADMINS'], subject='Microblog Failure',
 	            credentials=auth, secure=secure)
 			mail_handler.setLevel(logging.INFO)
@@ -95,3 +100,6 @@ def get_locale():
 
 from app import models
 
+
+admin.add_view(ModelView(models.User, db.session))
+admin.add_view(ModelView(models.Post, db.session))
